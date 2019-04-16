@@ -1,4 +1,6 @@
 <div class="card" (click)="redirect(recipeValue.id)">
-    <h1 class="title">{{recipeValue.name}}</h1>
     <img class="image" src="{{recipeValue.image}}">
+    <div class="info">
+        {{recipeValue.name}}
+    </div>
 </div>

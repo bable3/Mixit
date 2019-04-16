@@ -1,0 +1,16 @@
+nav {
+    background: white;
+    display: block;
+    position: sticky;
+    z-index: 1000;
+    right: 0;
+    top: 0;
+    left: 0;
+    box-shadow: 0px 2px 10px -1px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    padding: 20px 0;
+
+    img {
+        height: 25px;
+    }
+}
