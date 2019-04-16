@@ -1,0 +1,14 @@
+<h1>Detail</h1>
+<div class="recipe" *ngIf="recipe !== undefined">
+    <h2>{{recipe.name}}</h2>
+    <img src={{recipe.image}} />
+    <h2>Vous aurez besoin...</h2>
+    <div class="steps" *ngFor="let step of recipe.steps">
+        <app-ingredient [step]=step></app-ingredient>
+    </div>
+    <h2>Préparation</h2>
+    <div class="steps" *ngFor="let step of recipe.steps">
+        <app-step [step]=step></app-step>
+    </div>
+    <app-stepbystep></app-stepbystep>
+</div>
