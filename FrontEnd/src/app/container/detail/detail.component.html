@@ -1,15 +1,18 @@
 <div class="recipe" *ngIf="recipe !== undefined">
     <div class="banner">
-        <img class="cocktail-image" src={{recipe.image}} />
+        <img class="cocktail-image" src="./assets/images/cocktails/{{recipe.image}}" />
         <div class="cocktail-name">{{recipe.name}}</div>
     </div>
     <h2 class="text-center">Vous aurez besoin...</h2>
-    <div class="steps" *ngFor="let step of recipe.steps">
-        <app-ingredient [step]=step></app-ingredient>
+    <div class="ingredient-container">
+        <div class="ingredient-background">
+            <app-ingredient *ngFor="let step of recipe.steps" [step]=step></app-ingredient>
+        </div>
     </div>
+
     <h2 class="text-center">Préparation</h2>
-    <div class="steps" *ngFor="let step of recipe.steps">
-        <app-step [step]=step></app-step>
+    <div class="steps">
+        <app-step *ngFor="let step of recipe.steps" [step]=step></app-step>
     </div>
     <app-stepbystep></app-stepbystep>
 </div>

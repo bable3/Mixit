@@ -1,0 +1,13 @@
+.ingredient-card {
+    display: flex;
+    width: 150px;
+    height: 150px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #357B3F;
+
+    img {
+        height: 100px;
+    }
+}

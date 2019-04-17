@@ -11,5 +11,11 @@ import { Component } from '@angular/core';
 //export du composant de la class du composant
 export class AppComponent {
   title = 'app';
-}
 
+  public assets_path: "./assets/";
+  public images_path: "./assets/images/";
+  public ingrendients_path: "./assets/images/ingredients/";
+  public cocktails_path: "./assets/images/cocktails/";
+  public globals_path: "./assets/images/globals/";
+
+}

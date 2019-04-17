@@ -95,7 +95,7 @@ class RecipeService
         $ingredientDto->id = $ingredient->id;
         $ingredientDto->name = $ingredient->name;
         $ingredientDto->image = $ingredient->image;
-        $ingredientDto->unit = $ingredient->unit;
+        $ingredientDto->unit = $this->GetUnit($ingredient);
         $ingredientDto->type = $ingredient->type;
         $ingredientDto->vol = $ingredient->vol;
         return $ingredientDto;
@@ -135,6 +135,28 @@ class RecipeService
         return $verb.' '.$step->quantity.' '.$unitReturn.' '.$this->GetDeterminant($step->ingredient->name).' '.$step->ingredient->name.' '.$step->content;
     }
 
+    protected function GetUnit($ingredient) {
+        $unit = '';
+        switch($ingredient->unit) 
+        {
+            case UnitEnum::Cl :
+                return 'cl.';
+                break;
+            case UnitEnum::Feuille:
+            return 'feuille(s)';
+                break;
+            case UnitEnum::Rondelle:
+            return 'rondelle(s)';
+                break;
+            case UnitEnum::Cuillere:
+            return 'cc.';
+                break;
+            default:
+                return $ingredient->unit;
+        }
+        
+    }
+    
     protected function GetDeterminant($text) {
         if (empty($text))
             return '';

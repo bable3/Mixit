@@ -13,5 +13,23 @@
         position: absolute;
         left: 10px;
         bottom: 10px;
+        font-size: 25px;
+        font-weight: bold;
+        color: white;
     }
+}
+
+.ingredient-container {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
+.ingredient-background {
+    background: rgba(98, 183, 111, 0.17);
+    display: inline-flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 10px 0;
+    height: inherit;
 }

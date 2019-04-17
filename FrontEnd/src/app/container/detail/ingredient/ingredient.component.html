@@ -1,4 +1,7 @@
-<div *ngIf="step.ingredient?.name">
-    <img src="{{step.ingredient.image}}">
-    <p>{{step.ingredient.name}}</p>
+<div class="ingredient-card" *ngIf="step.ingredient?.name">
+    <div>
+        <img src="./assets/images/ingredients/{{step.ingredient.image}}">
+        <div>{{step.ingredient.name}}</div>
+        <div>{{step.quantity}} {{step.ingredient.unit}}</div>
+    </div>
 </div>
