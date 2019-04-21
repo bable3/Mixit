@@ -10,18 +10,18 @@
             </div>
         </div>
         <h2 class="text-center section-title row m-y">Préparation</h2>
-        <div class="justify-center d-flex row wrap m-y">
+        <div class="justify-center preparation d-flex row wrap m-y">
             <app-step class="step-background row wrap" *ngFor="let step of recipe.steps" [step]=step></app-step>
         </div>
     </div>
     <div class="step-button btn" [ngClass]="{'nothing': !clicked, 'full-height': clicked}">
         <div [ngClass]="{'hidden': clicked}">
             Suivre étape par étape
-            {{clicked}}
         </div>
         <span (click)="clicked = !clicked"> V</span>
         <div class="justify-center d-flex row wrap m-y">
-            <app-stepbystep class="step-background row wrap" [steps]=recipe.steps [ngClass]="{'hidden': !clicked}">
+            <app-stepbystep class="step-background row wrap" [steps]=recipe.steps [recipe]=recipe
+                [ngClass]="{'hidden': !clicked}">
             </app-stepbystep>
         </div>
     </div>

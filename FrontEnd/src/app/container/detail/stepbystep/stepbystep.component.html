@@ -2,6 +2,12 @@
     <button class="after-btn" (click)="decrementCounter(count)">--</button>
     <button class="next-btn" (click)="incrementCounter(count)">++</button>
     <div>
+        {{recipe.name}}
+    </div>
+    <div>
+        {{count + 1}} / {{numberOfSteps}}
+    </div>
+    <div>
         {{content}}
     </div>
 </div>

@@ -8,17 +8,27 @@ import { Component, Input } from '@angular/core';
 
 export class StepByStepComponent {
     @Input() steps: any[];
+    @Input() recipe: any[];
     public count: number = 0;
-    public clicked: boolean;
+    numberOfSteps: number;
     content: string;
 
     ngOnInit(): void {
-        this.content = stepByStep(this.count, this.steps);
+        if (this.steps[this.steps.length - 1].ingredient != null) {
+            this.numberOfSteps = this.steps.length + 1;
+        } else {
+            this.numberOfSteps = this.steps.length;
+            this.content = stepByStep(this.count, this.steps);
+        }
     }
     incrementCounter() {
         if (this.count < this.steps.length - 1) {
             this.count = this.count + 1;
             this.content = stepByStep(this.count, this.steps);
+        } else if (this.steps[this.steps.length - 1].ingredient != null && this.count < this.steps.length) {
+            // message de fin par défaut si il n'y en a pas de défini dans la db
+            this.count = this.count + 1;
+            this.content = 'dégustez !';
         } else {
 
         }
