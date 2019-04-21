@@ -28,4 +28,12 @@ export class CardComponent implements OnInit, OnChanges {
     redirect(id: number) {
         this.router.navigate(['/detail/' + id]);
     }
+    setMyStyles() {
+        let styles = {
+            'background': `url(./assets/images/cocktails/${this.recipeValue.image})`,
+            'background-size': 'cover',
+            'background-position': 'center'
+        };
+        return styles;
+    }
 }

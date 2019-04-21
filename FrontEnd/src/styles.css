@@ -1,8 +1,64 @@
 /* You can add global styles to this file, and also import other style files */
 body {
     margin: 0;
+    font-family: "poppins", sans-serif;
 }
 
 .text-center {
     text-align: center;
+}
+
+.container {
+    flex-wrap: wrap;
+    display: flex;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 465px) {
+    .container {
+        margin: 0 15px;
+    }
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.space-around {
+    justify-content: space-around;
+}
+
+.row {
+    width: 100%;
+    max-width: 450px;
+}
+
+.d-block {
+    display: block;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.d-inline {
+    display: inline;
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+.m-y {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.hidden {
+    display: none !important;
 }

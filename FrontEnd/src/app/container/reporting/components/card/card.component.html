@@ -1,5 +1,4 @@
-<div class="card" (click)="redirect(recipeValue.id)">
-    <img class="image" src="./assets/images/cocktails/{{recipeValue.image}}">
+<div class="card" (click)="redirect(recipeValue.id)" [ngStyle]="setMyStyles()">
     <div class="info">
         {{recipeValue.name}}
     </div>

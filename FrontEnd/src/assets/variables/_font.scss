@@ -1,0 +1,20 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,700,900");
+
+$hairline-weight: 100;
+$thin-weight: 200;
+$light-weight: 300;
+$normal-weight: 400;
+$medium-weight: 500;
+$semibold-weight: 600;
+$bold-weight: 700;
+$xbold-weight: 800;
+$black-weight: 900;
+
+$normal-font: "Poppins", sans-serif;
+$book-font: "starling, serif";
+
+$regular-weight: $normal-weight;
+$book-weight: $light-weight;
+$xlight-weight: $hairline-weight;
+$ultralight-weight: $hairline-weight;
+$heavy-weight: $xbold-weight;

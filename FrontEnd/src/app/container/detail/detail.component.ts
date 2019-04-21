@@ -31,4 +31,12 @@ export class DetailComponent implements OnInit, OnDestroy {
             this.subscribeRecipe.unsubscribe();
         }
     }
+    setMyStyles() {
+        let styles = {
+            'background': `url(./assets/images/cocktails/${this.recipe.image})`,
+            'background-size': 'cover',
+            'background-position': 'center'
+        };
+        return styles;
+    }
 }

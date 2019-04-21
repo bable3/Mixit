@@ -1,9 +1,12 @@
-<div class="step-card">
-    <h5>{{step.order}}</h5>
-    <p>{{step.content}}</p>
-
-    <!-- indiquer que la propriété de l'objet peut être null afin de ne pas avoir d'erreur  (best way)
-        <h5 *ngIf="step.ingredient !== null">{{step.ingredient?.name}}</h5> -->
-    <a href="#">-></a>
+<div class="step-info-container row">
+    <div class="step-order">#{{step.order}}</div>
+    <div class="step-content">{{step.content}}</div>
 </div>
-<hr>
+
+
+
+<!-- indiquer que la propriété de l'objet peut être null afin de ne pas avoir d'erreur  (best way)
+        <h5 *ngIf="step.ingredient !== null">{{step.ingredient?.name}}</h5> -->
+<!-- <div class="row arrow-link">
+    <a href="#">-></a>
+</div> -->
