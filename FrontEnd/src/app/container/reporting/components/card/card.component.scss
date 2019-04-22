@@ -7,9 +7,9 @@
     margin: 3px;
 }
 
-@media screen and (min-width: 460px) {
+@media screen and (min-width: 467px) {
     .card {
-        width: 220px;
+        width: 215px;
         height: 300px;
     }
 }
@@ -24,4 +24,5 @@
     padding: 10px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    font-weight: 700;
 }

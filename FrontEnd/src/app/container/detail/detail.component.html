@@ -1,6 +1,7 @@
 <div class="recipe" *ngIf="recipe !== undefined">
     <div class="banner m-y" [ngStyle]="setMyStyles()">
         <div class="cocktail-name">{{recipe.name}}</div>
+        <div class="cocktail-vol">{{recipe.vol}}%</div>
     </div>
     <div class="container justify-center">
         <h2 class="text-center section-title row m-y">Vous aurez besoin...</h2>
@@ -15,13 +16,17 @@
         </div>
     </div>
     <div class="step-button btn" [ngClass]="{'nothing': !clicked, 'full-height': clicked}">
-        <div [ngClass]="{'hidden': clicked}">
-            Suivre étape par étape
+        <div (click)="clicked = !clicked" class="sbs-btn">
+            <span [ngClass]="{'hidden': clicked, 'opacity' : !clicked}">
+                Suivre étape par étape
+            </span>
+            <span [ngClass]="{'hidden': !clicked, 'opacity': clicked}">
+                Revenir à la recette
+            </span>
         </div>
-        <span (click)="clicked = !clicked"> V</span>
-        <div class="justify-center d-flex row wrap m-y">
+        <div class="justify-center d-flex wrap m-y container">
             <app-stepbystep class="step-background row wrap" [steps]=recipe.steps [recipe]=recipe
-                [ngClass]="{'hidden': !clicked}">
+                [ngClass]="{'hidden': !clicked, 'opacity': clicked}">
             </app-stepbystep>
         </div>
     </div>

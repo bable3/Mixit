@@ -62,3 +62,8 @@ body {
 .hidden {
     display: none !important;
 }
+
+button {
+    background: none;
+    border: none;
+}

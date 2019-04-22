@@ -16,6 +16,7 @@ export class StepByStepComponent {
     ngOnInit(): void {
         if (this.steps[this.steps.length - 1].ingredient != null) {
             this.numberOfSteps = this.steps.length + 1;
+            this.content = stepByStep(this.count, this.steps);
         } else {
             this.numberOfSteps = this.steps.length;
             this.content = stepByStep(this.count, this.steps);
