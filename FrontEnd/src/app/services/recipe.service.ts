@@ -9,7 +9,7 @@ import { Recipe } from '../models/recipe.model';
 export class RecipeService extends BaseService {
     private endPoint = {
         recipes: `${environment.apiUrl}recipes`,
-        recipe:  `${environment.apiUrl}recipe`
+        recipe: `${environment.apiUrl}recipe`
     };
 
     constructor(protected http: HttpClient) {
