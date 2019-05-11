@@ -42,6 +42,7 @@ class RecipeService
         $recipeDto->name = $recipe->name;
         $recipeDto->taste = $this->GetTaste($recipe->taste);
         $recipeDto->glass = $this->GetGlass($recipe->glass);
+        $recipeDto->glassImage = $this->GetGlassImage($recipe->glass);
         $recipeDto->image = $recipe->image;
         $recipeDto->canShake = $recipe->canShake;
         $recipeDto->time = $recipe->time;
@@ -57,12 +58,18 @@ class RecipeService
         for ($i = 0; $i < count($steps); $i++) {
             $stepsDto[$i] = $this->MapStepToDto($steps[$i]);
         }
+        // Il faut mettre un étape par défaut en plus à la fin
+        // if($recipe->canShake == true){
+        //     $stepsDto[count($steps) -1]->content = 'Versez le contenu du shaker dans un ' . $this->GetGlass($recipe->glass); 
+        // }else{
+        //     $stepsDto[count($steps) -1]->content = 'Dégustez'; 
+        // }
         usort($stepsDto, array($this, "order"));
 
         $withIce = $recipe->withIce ? 'rempli de glaçons' : '';
         $withShaker = $recipe->canShake ? 'shaker' : $this->GetGlass($recipe->glass);
         $stepsDto[0]->content = $stepsDto[0]->content. 'dans un '.$withShaker.' '.$withIce;
-
+        
         return $stepsDto;
     }
 
@@ -185,6 +192,23 @@ class RecipeService
                 return 'verre ballon';
             default:
                 return 'verre classique';
+        }
+    }
+    protected function GetGlassImage($glass) {
+        switch($glass) 
+        {
+            case GlassEnum::Mojito : 
+                return 'verre-mojito'; 
+            case GlassEnum::OldFashioned : 
+                return 'verre-old-fashioned'; 
+            case GlassEnum::LongDrink : 
+                return 'verre-long-drink'; 
+            case GlassEnum::Cocktail : 
+                return 'verre-cocktail'; 
+            case GlassEnum::Ballon : 
+                return 'verre-ballon';
+            default:
+                return 'verre-classique';
         }
     }
 

@@ -1,14 +1,40 @@
-<div class="container">
-    <div class="row m-y">
-        {{recipe.name}}
+<div class="step-by-step btn" [ngClass]="{'': !clicked, 'active': clicked}">
+    <div (swipeup)='clicked = !clicked' (click)="clicked = !clicked">
+        <span class="sbs-btn" [ngClass]="{'invisible': clicked, 'opacity' : !clicked}">
+            Suivre étape par étape
+        </span>
+        <span class="sbs-btn triger" [ngClass]="{'invisible': !clicked, 'opacity' : clicked}">
+            =
+        </span>
+        <span [ngClass]="{'opacity': clicked}" class="back-btn">
+            Revenir à la recette
+        </span>
     </div>
-    <div class="row m-y">
-        {{count + 1}} / {{numberOfSteps}}
+    <div class='content' [ngClass]="{'opacity': clicked, 'invisible' : !clicked}">
+        <div class="d-flex wrap m-y container">
+            <div class="row recipe-info">
+                <span class="recipe-name m-y">
+                    {{recipe.name}}
+                </span>
+                <span class="recipe-steps m-y">
+                    {{count + 1}} / {{numberOfSteps}}
+                </span>
+            </div>
+        </div>
+        <div class="loading-bar"></div>
+        <div class="d-flex wrap m-y container justify-center">
+            <div class="row m-y">
+                {{content}}
+            </div>
+            <img [hidden]="!recipe.canshake" class="glass" src="./assets/images/verres/{{recipe.glassImage}}.svg">
+            <img [hidden]="recipe.canshake" class="glass" src="./assets/images/verres/verre-shaker.svg">
+        </div>
+        <div class="dots row d-flex">
+            <div class="dot" *ngFor=" let number of numbers" attr.id="dot-{{number}}" attr.number="{{number}}">
+            </div>
+        </div>
+        <div class=" page" [ngClass]="{'d-none': !clicked, '': clicked}" (swipedown)='clicked = !clicked'
+            (swiperight)="decrementCounter(count)" (swipeleft)="incrementCounter(count)">
+        </div>
     </div>
-    <div class="row m-y">
-        {{content}}
-    </div>
-    <button class="after-btn btn" (click)="decrementCounter(count)">
-        <<</button> <button class="next-btn btn" (click)="incrementCounter(count)">>>
-    </button>
 </div>

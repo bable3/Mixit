@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { RecipeService } from 'src/app/services/recipe.service';
 import { Subscription } from 'rxjs';
 import { Recipe } from 'src/app/models/recipe.model';
+import 'hammerjs';
 
 @Component({
     selector: 'app-detail',

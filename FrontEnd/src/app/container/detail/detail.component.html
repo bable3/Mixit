@@ -15,7 +15,7 @@
             <app-step class="step-background row wrap" *ngFor="let step of recipe.steps" [step]=step></app-step>
         </div>
     </div>
-    <div class="step-button btn" [ngClass]="{'nothing': !clicked, 'full-height': clicked}">
+    <!-- <div class="step-button btn" [ngClass]="{'nothing': !clicked, 'full-height': clicked}">
         <div (click)="clicked = !clicked" class="sbs-btn">
             <span [ngClass]="{'hidden': clicked, 'opacity' : !clicked}">
                 Suivre étape par étape
@@ -29,6 +29,9 @@
                 [ngClass]="{'hidden': !clicked, 'opacity': clicked}">
             </app-stepbystep>
         </div>
-    </div>
+    </div> -->
+    <app-stepbystep [steps]=recipe.steps [recipe]=recipe>
+    </app-stepbystep>
+
 
 </div>

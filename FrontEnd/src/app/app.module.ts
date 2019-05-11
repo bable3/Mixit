@@ -13,6 +13,17 @@ import { SliderComponent } from './container/reporting/components/slider.compone
 import { StepComponent } from './container/detail/step/step.component';
 import { IngredientComponent } from './container/detail/ingredient/ingredient.component';
 import { StepByStepComponent } from './container/detail/stepbystep/stepbystep.component';
+
+import * as Hammer from 'hammerjs';
+import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
+
+export class MyHammerConfig extends HammerGestureConfig {
+  overrides = <any>{
+    // override hammerjs default configuration
+    'swipe': { direction: Hammer.DIRECTION_ALL }
+  }
+}
+
 //import de tous les modules
 
 @NgModule({
@@ -33,7 +44,11 @@ import { StepByStepComponent } from './container/detail/stepbystep/stepbystep.co
     AppRoutingModule
   ],
   providers: [
-    RecipeService
+    RecipeService,
+    {
+      provide: HAMMER_GESTURE_CONFIG,
+      useClass: MyHammerConfig
+    }
   ],
   //module de Boot
   bootstrap: [AppComponent]

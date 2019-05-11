@@ -7,6 +7,7 @@ class RecipeDto
     public $name;
     public $taste;
     public $glass;
+    public $glassImage;
     public $image;
     public $canShake;
     public $time;

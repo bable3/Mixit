@@ -73,22 +73,6 @@
     transition: ease-in-out 0.2s;
 }
 
-.step-button {
-    display: block;
-    width: 100vw;
-    height: 30px;
-    position: fixed;
-    bottom: 0;
-    padding: 5px 0;
-    text-align: center;
-    background: rgb(98, 183, 111);
-    color: white;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    z-index: 1000;
-    transition: ease-in-out 0.2s;
-}
-
 .section-title {
     font-weight: $book-weight;
     font-family: $book-font;
@@ -97,10 +81,4 @@
 
 .preparation {
     margin-bottom: 10vh;
-}
-
-.sbs-btn {
-    position: fixed;
-    width: 100%;
-    bottom: 10px;
 }

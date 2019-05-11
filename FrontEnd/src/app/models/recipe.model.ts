@@ -9,6 +9,7 @@ export class Recipe {
     difficulty: number;
     step: number;
     glass: number;
+    glassImage: string;
     vol: number;
     canShake: boolean;
     steps: Step[];
