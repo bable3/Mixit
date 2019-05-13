@@ -13,9 +13,11 @@ import { SliderComponent } from './container/reporting/components/slider.compone
 import { StepComponent } from './container/detail/step/step.component';
 import { IngredientComponent } from './container/detail/ingredient/ingredient.component';
 import { StepByStepComponent } from './container/detail/stepbystep/stepbystep.component';
+import { FiltersComponent } from './container/reporting/filters/filters.component'
 
 import * as Hammer from 'hammerjs';
 import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
+import { FilterCardComponent } from './container/reporting/filters/card/filter-card.component';
 
 export class MyHammerConfig extends HammerGestureConfig {
   overrides = <any>{
@@ -36,7 +38,9 @@ export class MyHammerConfig extends HammerGestureConfig {
     SliderComponent,
     StepComponent,
     IngredientComponent,
-    StepByStepComponent
+    StepByStepComponent,
+    FiltersComponent,
+    FilterCardComponent
   ],
   imports: [
     BrowserModule,

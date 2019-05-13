@@ -1,0 +1,17 @@
+.card {
+    padding: 5px 10px;
+    background: rgba(98, 183, 111, 0.17);
+    margin: 5px 3px;
+    color: rgb(30, 78, 37);
+    position: relative;
+    border-radius: 50px;
+
+    &.selected {
+        background: rgba(98, 183, 111, 1);
+        color: white;
+    }
+
+    .cancel {
+        margin-left: 10px;
+    }
+}

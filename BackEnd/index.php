@@ -1,5 +1,3 @@
-ET BIEN LE BONSOIR !!!!
-
 <?php
 
 use App\Kernel;

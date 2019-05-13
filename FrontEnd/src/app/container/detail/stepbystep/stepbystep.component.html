@@ -1,4 +1,4 @@
-<div class="step-by-step btn" [ngClass]="{'': !clicked, 'active': clicked}">
+<div class="step-by-step btn" [ngClass]="{'': !clicked, 'active': clicked, 'non-active' : count < numberOfSteps}">
     <div (swipeup)='clicked = !clicked' (click)="clicked = !clicked">
         <span class="sbs-btn" [ngClass]="{'invisible': clicked, 'opacity' : !clicked}">
             Suivre étape par étape
@@ -21,16 +21,17 @@
                 </span>
             </div>
         </div>
-        <div class="loading-bar"></div>
+        <div class="loading-bar" [ngStyle]="{'width': oneStepLength * (count + 1) + '%'}"></div>
         <div class="d-flex wrap m-y container justify-center">
             <div class="row m-y">
                 {{content}}
             </div>
-            <img [hidden]="!recipe.canshake" class="glass" src="./assets/images/verres/{{recipe.glassImage}}.svg">
-            <img [hidden]="recipe.canshake" class="glass" src="./assets/images/verres/verre-shaker.svg">
+            <img *ngIf="!recipe.canShake" class="glass" src="./assets/images/verres/{{recipe.glassImage}}.svg">
+            <img *ngIf="recipe.canShake" class="glass" src="./assets/images/verres/verre-shaker.svg">
         </div>
         <div class="dots row d-flex">
-            <div class="dot" *ngFor=" let number of numbers" attr.id="dot-{{number}}" attr.number="{{number}}">
+            <div class="dot" *ngFor=" let number of numbers" attr.id="dot-{{number}}" attr.number="{{number}}"
+                [ngClass]="{'dot-active': count == number}">
             </div>
         </div>
         <div class=" page" [ngClass]="{'d-none': !clicked, '': clicked}" (swipedown)='clicked = !clicked'

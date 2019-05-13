@@ -1,0 +1,4 @@
+<div class='card' [ngClass]="{'selected': selected == true, '': selected == false }">
+    <span (click)="selected = true">{{ingredient.name}}</span> <span class="cancel" (click)="selected = false"
+        [hidden]="!selected">X</span>
+</div>

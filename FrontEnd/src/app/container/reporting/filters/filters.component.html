@@ -1,0 +1,13 @@
+<div class="container d-flex space-between">
+    <div *ngFor="let ingredient of ingredients">
+        <app-cardFilters [ingredient]=ingredient></app-cardFilters>
+    </div>
+</div>
+<div class="container d-flex space-between" *ngFor="let type of types">
+    <h1 class="row ingredient-title">{{type}}</h1>
+    <div *ngFor="let ingredient of ingredients">
+        <div *ngIf="ingredient.type == type">
+            <app-cardFilters [ingredient]=ingredient></app-cardFilters>
+        </div>
+    </div>
+</div>

@@ -3,6 +3,6 @@ export class Ingredient {
     public name: string;
     public image: string;
     public unit: number;
-    public type: number;
+    public type: string;
     public vol: number;
 }

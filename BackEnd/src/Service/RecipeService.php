@@ -8,6 +8,7 @@ use App\Model\Enum\UnitEnum;
 use App\Model\Enum\GlassEnum;
 use App\Model\Enum\TasteEnum;
 use App\Model\Enum\DifficultyEnum;
+use Doctrine\ORM\EntityRepository;
 
 class RecipeService
 {
@@ -21,6 +22,47 @@ class RecipeService
     public function getAll()
     {
         $recipes = $this->context->findAll();
+        foreach ($recipes as $recipe) {
+            $recipe->taste = $this->GetTaste($recipe->taste);
+            $recipe->glass = $this->GetGlass($recipe->glass);
+            $recipe->difficulty = $this->GetDifficulty($recipe->difficulty);
+        }
+        return $recipes;
+    }
+    
+    public function searchRecipes($searchDto)
+    {
+        $query = $this->queryBuilder($searchDto);      
+        $recipesResult = $this->context->findAll();
+        $recipes = [];
+
+        foreach($recipesResult as $key => $recipe){
+            $ingredients = [];
+            $isMatch = true;
+
+            foreach($recipe->steps as $keyStep => $step){
+                if(isset($step->ingredient->id)){
+                    $ingredients[$keyStep] = strval($step->ingredient->id);
+                }
+            }
+            foreach($query as $property => $value){
+                if($recipe->$property != $value){
+                    $isMatch = false;
+                }
+            }
+
+            if($isMatch){
+                if(isset($searchDto->ingredients) && is_array($searchDto->ingredients) && $searchDto->ingredients != 'null'){
+                    $result = array_intersect($ingredients, $searchDto->ingredients);
+                    $haveCommonValue = count($result) == count($searchDto->ingredients);
+                    if($haveCommonValue){
+                        $recipes[$key] = $recipe;
+                    }
+                }else{
+                    $recipes[$key] = $recipe;
+                }
+            }
+        }
         foreach ($recipes as $recipe) {
             $recipe->taste = $this->GetTaste($recipe->taste);
             $recipe->glass = $this->GetGlass($recipe->glass);
@@ -58,18 +100,19 @@ class RecipeService
         for ($i = 0; $i < count($steps); $i++) {
             $stepsDto[$i] = $this->MapStepToDto($steps[$i]);
         }
-        // Il faut mettre un étape par défaut en plus à la fin
-        // if($recipe->canShake == true){
-        //     $stepsDto[count($steps) -1]->content = 'Versez le contenu du shaker dans un ' . $this->GetGlass($recipe->glass); 
-        // }else{
-        //     $stepsDto[count($steps) -1]->content = 'Dégustez'; 
-        // }
+        
         usort($stepsDto, array($this, "order"));
 
         $withIce = $recipe->withIce ? 'rempli de glaçons' : '';
         $withShaker = $recipe->canShake ? 'shaker' : $this->GetGlass($recipe->glass);
         $stepsDto[0]->content = $stepsDto[0]->content. 'dans un '.$withShaker.' '.$withIce;
-        
+        $stepsDto[count($steps)] = new StepDto();
+        if($recipe->canShake){
+            $stepsDto[count($steps)]->content = 'Versez le contenu du shaker dans un ' . $this->GetGlass($recipe->glass) . ' et dégustez !';
+        }else{
+            $stepsDto[count($steps)]->content = 'Dégustez'; 
+        }
+        $stepsDto[count($steps)]->order = count($steps) + 1;
         return $stepsDto;
     }
 
@@ -242,5 +285,17 @@ class RecipeService
     protected function order($a, $b) {
         if($a->order == $b->order){ return 0 ; }
         return ($a->order < $b->order) ? -1 : 1;
+    }
+
+    protected function queryBuilder($searchDto){
+        $query = [];
+        if(isset($searchDto->difficulty) && $searchDto->difficulty != 'null'){
+            $query['difficulty'] = $searchDto->difficulty;
+        }
+        if(isset($searchDto->taste) && $searchDto->taste != 'null'){
+            $query['taste'] = $searchDto->taste;
+        }
+        //pour ajouter un champ de rechercher il faut ajouter la condition ici et le nom de la recherche dans le searchDto
+        return $query;
     }
 }
