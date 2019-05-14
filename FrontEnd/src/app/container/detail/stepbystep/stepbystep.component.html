@@ -26,7 +26,7 @@
             <div class="row m-y">
                 {{content}}
             </div>
-            <img *ngIf="!recipe.canShake" class="glass" src="./assets/images/verres/{{recipe.glassImage}}.svg">
+            <!-- <img *ngIf="!recipe.canShake" class="glass" src="./assets/images/verres/{{recipe.glassImage}}.svg"> -->
             <img *ngIf="recipe.canShake" class="glass" src="./assets/images/verres/verre-shaker.svg">
         </div>
         <div class="dots row d-flex">
@@ -38,4 +38,5 @@
             (swiperight)="decrementCounter(count)" (swipeleft)="incrementCounter(count)">
         </div>
     </div>
+    lol:<div [ngStyle]="{'background = red': true = true}" [innerHTML]="variable | safe: 'html' "></div>
 </div>

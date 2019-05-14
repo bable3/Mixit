@@ -13,7 +13,8 @@ import { SliderComponent } from './container/reporting/components/slider.compone
 import { StepComponent } from './container/detail/step/step.component';
 import { IngredientComponent } from './container/detail/ingredient/ingredient.component';
 import { StepByStepComponent } from './container/detail/stepbystep/stepbystep.component';
-import { FiltersComponent } from './container/reporting/filters/filters.component'
+import { FiltersComponent } from './container/reporting/filters/filters.component';
+import { SafePipe } from './safe.pipe';
 
 import * as Hammer from 'hammerjs';
 import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
@@ -40,12 +41,14 @@ export class MyHammerConfig extends HammerGestureConfig {
     IngredientComponent,
     StepByStepComponent,
     FiltersComponent,
-    FilterCardComponent
+    FilterCardComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+
   ],
   providers: [
     RecipeService,
