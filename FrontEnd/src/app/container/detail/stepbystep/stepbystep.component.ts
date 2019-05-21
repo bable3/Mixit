@@ -47,7 +47,6 @@ export class StepByStepComponent {
         this.oneStepLength = 100 / this.numberOfSteps;
         this.numbers = Array(this.numberOfSteps).fill(0).map((x, i) => i);
         this.liquidYPos = this.liquidHeight - this.steps[0].quantity * this.clHeight;
-        console.log(176 + this.liquidYPos);
     }
     incrementCounter() {
         if (this.count < this.steps.length - 1) {

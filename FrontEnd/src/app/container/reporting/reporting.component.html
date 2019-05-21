@@ -1,9 +1,8 @@
-<app-filters (filtersChange)='changeFilters($event)'></app-filters>
 <div class="container">
     <div class="m-y" *ngFor="let recipe of recipes">
         <app-card class="justify-center " [recipe]=recipe></app-card>
     </div>
-    <div class="filters-error row" *ngIf="recipes.length == 0">
+    <div class="filters-error row" *ngIf="recipes?.length === 0">
         <div>Aucune recette n'a été trouvé</div>
         <div class="link" (click)="reloadRecipes()">Recharger les recettes</div>
     </div>

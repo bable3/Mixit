@@ -1,9 +1,13 @@
-<nav>
+<nav class="d-flex wrap">
     <div class="container">
         <div class="d-flex nav-row">
-            <img class="back" (click)="redirect()" src='./assets/images/globals/arrow-left.svg'>
+            <img class="back" *ngIf="!isHome" (click)="redirect()" src='./assets/images/globals/arrow-left.svg'>
             <img class="logo" (click)="redirect()" src='./assets/images/globals/logo-text.svg'>
-            <img class="filter" src='./assets/images/globals/filters.svg'>
+            <img *ngIf="!isSearch" (click)="redirect('filters')" class="filter" src='./assets/images/globals/filters.svg'>
+            <img *ngIf="isSearch" (click)="displaySearch()" class="filter" src='./assets/images/globals/search.svg'>
         </div>
+    </div>
+    <div class="input-container container row" [ngClass]="{'active': toggleSearch}">
+        <app-search *ngIf="toggleSearch"></app-search>
     </div>
 </nav>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationStart } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
     selector: 'app-nav',
@@ -8,13 +9,25 @@ import { Router } from '@angular/router';
 })
 export class NavComponent {
 
+    public isSearch: boolean = true;
+    public isHome: boolean = true;
+    public toggleSearch: boolean = false;
 
     constructor(
-        private router: Router
-    ) { }
+        private router: Router)
+    {
+        this.router.events.pipe(filter(event => event instanceof NavigationStart)).subscribe((val:NavigationStart) => {
+            this.isHome = (val.url === '/');
+        });
+    }
 
-    name = 'navigation';
-    redirect() {
-        this.router.navigate(['/']);
+    redirect(route: string = null) {
+        const param = (route !== null) ? '/' + route : '/';
+        this.router.navigate([param]);
+    }
+
+    displaySearch() {
+        this.toggleSearch = !this.toggleSearch;
+        this.isSearch = false;
     }
 }

@@ -14,10 +14,12 @@ import { IngredientComponent } from './container/detail/ingredient/ingredient.co
 import { StepByStepComponent } from './container/detail/stepbystep/stepbystep.component';
 import { FiltersComponent } from './container/reporting/filters/filters.component';
 import { SafePipe } from './safe.pipe';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import * as Hammer from 'hammerjs';
 import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { FilterCardComponent } from './container/reporting/filters/card/filter-card.component';
+import { SearchComponent } from './container/navigation/search/search.component';
 
 export class MyHammerConfig extends HammerGestureConfig {
   overrides = <any>{
@@ -40,10 +42,13 @@ export class MyHammerConfig extends HammerGestureConfig {
     StepByStepComponent,
     FiltersComponent,
     FilterCardComponent,
-    SafePipe
+    SafePipe,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
 

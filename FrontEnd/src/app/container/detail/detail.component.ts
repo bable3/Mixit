@@ -23,7 +23,6 @@ export class DetailComponent implements OnInit, OnDestroy {
         const recipeId = this.route.snapshot.params.id;
         this.subscribeRecipe = this.recipeService.findById(recipeId).subscribe(result => {
             this.recipe = result;
-            console.log(result);
         });
     }
 

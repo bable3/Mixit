@@ -5,4 +5,5 @@ export class Ingredient {
     public unit: number;
     public type: string;
     public vol: number;
+    public isActive: boolean;
 }
