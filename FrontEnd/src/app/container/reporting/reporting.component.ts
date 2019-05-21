@@ -17,6 +17,26 @@ export class ReportingComponent {
     ngOnInit(): void {
         this.subscribeRecipe = this.recipeService.getAll().subscribe(result => {
             this.recipes = result;
+            console.log(result);
+        });
+    }
+
+    ngOnDestroy(): void {
+        if (this.subscribeRecipe) {
+            this.subscribeRecipe.unsubscribe();
+        }
+    }
+    reloadRecipes() {
+        this.subscribeRecipe = this.recipeService.getAll().subscribe(result => {
+            this.recipes = result;
+        });
+    }
+    changeFilters($data: string): void {
+        this.subscribeRecipe = this.recipeService.search('null', 'null', $data).subscribe(result => {
+            //afin d'utiliser le ngfor on est obligé de recvoir un array d'objet voilà pourquoi on map
+            this.recipes = Object.keys(result).map(key => {
+                return result[key];
+            });
         });
     };
 

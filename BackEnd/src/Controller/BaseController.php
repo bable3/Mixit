@@ -21,6 +21,7 @@ class BaseController extends AbstractController
         $response->setContent(json_encode($content));
         $response->headers->set('Content-Type', 'application/json');
         $response->headers->set('Access-Control-Allow-Origin', '*');
+        
         return $response;
     }
 }

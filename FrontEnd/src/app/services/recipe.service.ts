@@ -29,7 +29,7 @@ export class RecipeService extends BaseService {
     findById(recipeId: number): Observable<Recipe> {
         return this._get(`${this.endPoint.recipe}/${recipeId}`);
     }
-    search(difficulty: string, taste: string, ingredients: Array<string>) {
-        return this._get(`${this.endPoint.search}/?difficulty=${difficulty}&taste=${taste}&ingredients=${ingredients.join("%")}`);
+    search(difficulty: string, taste: string, ingredients: string) {
+        return this._get(`${this.endPoint.search}?difficulty=${difficulty}&taste=${taste}&ingredients=${ingredients}`);
     }
 }

@@ -9,4 +9,5 @@ class IngredientDto
     public $unit;
     public $type;
     public $vol;
+    public $isActive;
 }

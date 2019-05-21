@@ -5,3 +5,30 @@
 .ingredient-title {
     text-transform: capitalize;
 }
+
+.filters-button-container {
+    position: fixed;
+    left: 50%;
+    bottom: 10px;
+}
+
+.filters-button {
+    justify-content: center;
+    padding: 5px 10px;
+    margin: 5px 0;
+    position: relative;
+    border-radius: 50px;
+    color: white;
+    font-size: 20px;
+    width: 80vw;
+    max-width: 450px;
+    transform: translateX(-50%);
+}
+
+.select {
+    background: rgb(98, 183, 111);
+}
+
+.reset {
+    background: #e65353;
+}

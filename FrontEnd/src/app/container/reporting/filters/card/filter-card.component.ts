@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { Ingredient } from 'src/app/models/ingredient.model';
 
 @Component({
@@ -7,6 +7,12 @@ import { Ingredient } from 'src/app/models/ingredient.model';
     styleUrls: ['./filter-card.component.scss']
 })
 export class FilterCardComponent {
-    @Input() ingredient: Ingredient;
-    selected: boolean = false;
+    @Input() ingredient: any;
+
+    activeFilter() {
+        this.ingredient.isActive = true;
+    };
+    desactiveFilter() {
+        this.ingredient.isActive = false;
+    };
 }

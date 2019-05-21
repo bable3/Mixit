@@ -1,13 +1,22 @@
 <div class="container d-flex space-between">
+    <h2 class="row ingredient-title">selection</h2>
     <div *ngFor="let ingredient of ingredients">
-        <app-cardFilters [ingredient]=ingredient></app-cardFilters>
+        <app-cardFilters for *ngIf="ingredient.isActive" [ingredient]=ingredient></app-cardFilters>
     </div>
 </div>
 <div class="container d-flex space-between" *ngFor="let type of types">
-    <h1 class="row ingredient-title">{{type}}</h1>
+    <h2 class="row ingredient-title">{{type}}</h2>
     <div *ngFor="let ingredient of ingredients">
         <div *ngIf="ingredient.type == type">
-            <app-cardFilters [ingredient]=ingredient></app-cardFilters>
+            <app-cardFilters *ngIf="!ingredient.isActive" [ingredient]=ingredient></app-cardFilters>
         </div>
+    </div>
+</div>
+<div class="filters-button-container">
+    <div class="select row d-flex filters-button" (click)="validateFilter()">
+        Valider les filtres
+    </div>
+    <div class="reset row d-flex filters-button" (click)="resetFilters()">
+        Réinitialiser les filtres
     </div>
 </div>

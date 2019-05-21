@@ -27,6 +27,7 @@ class IngredientService
        foreach($ingredients as $ingredient){
            $ingredient->type = $this->getType($ingredient);
            $ingredient->unit = $this->getUnit($ingredient);
+           $ingredient->isActive = false;
        }
 
        return $ingredients;

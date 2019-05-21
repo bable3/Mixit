@@ -12,7 +12,7 @@
 
 .btn {
     color: white;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 .page {
@@ -106,6 +106,7 @@
 
 .invisible {
     opacity: 0 !important;
+    display: none !important;
 }
 
 .opacity {
@@ -123,8 +124,9 @@
     top: 3px;
 }
 
-.triger {
-    opacity: 0.4;
+.slide-arrow {
+    height: 10px;
+    position: absolute;
 }
 
 .back-btn {
@@ -138,7 +140,7 @@
 .dots {
     justify-content: center;
     position: absolute;
-    bottom: 50px;
+    bottom: 20px;
 }
 
 .dot {
@@ -155,4 +157,14 @@
 .dot-active {
     opacity: 1;
     transform: scale(1.2);
+}
+
+.st0 {
+    fill: #FFFFFF;
+}
+
+.st1 {
+    clip-path: url(#SVGID_2_);
+    fill: white;
+    transition: all 0.2s cubic-bezier(0.24, 0.77, 1, 1) 0s;
 }

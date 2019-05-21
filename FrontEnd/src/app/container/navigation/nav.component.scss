@@ -12,12 +12,21 @@ nav {
 }
 
 .back {
-    position: absolute;
-    left: 20px;
     height: 25px;
+    margin-right: auto;
 }
 
 .logo {
     height: 25px;
+}
+
+.nav-row {
+    justify-content: center;
+    width: 90vw;
     margin: 0 auto;
+}
+
+.filter {
+    height: 25px;
+    margin-left: auto;
 }

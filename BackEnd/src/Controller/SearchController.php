@@ -33,13 +33,15 @@ class SearchController extends BaseController
         $searchDto = new SearchDto();
         $searchDto->taste = $request->query->get('taste');
         $searchDto->difficulty = $request->query->get('difficulty');
+        $ingredients = explode("%", $request->query->get('ingredients') );
+        $searchDto->ingredients =  $ingredients;
+
         
         // if (null !== $request->query->get('ingredients')){
-            $ingredients = explode("%", $request->query->get('ingredients') );
+        //$ingredients = explode("%", $request->query->get('ingredients') );
         // }else{
         //     $ingredients = 'null';
         // }
-        $searchDto->ingredients =  $ingredients;
 
         $recipes = $this->RecipeService()->searchRecipes($searchDto);
         return $this->setContent($recipes);

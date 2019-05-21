@@ -5,16 +5,16 @@ export class BaseService {
 
     constructor(
         protected http: HttpClient
-    ) {}
+    ) { }
 
     protected _get(url: string, options?: any) {
         return Observable.create((observer: Observer<any>) => {
             this.http.get(url, options).subscribe((response) => {
-              observer.next(response);
+                observer.next(response);
             },
-            (error: any) => {
-                observer.error(error);
-            });
+                (error: any) => {
+                    observer.error(error);
+                });
         });
     }
 
@@ -23,9 +23,9 @@ export class BaseService {
             this.http.put(url, data).subscribe((response) => {
                 observer.next(response);
             },
-            (error: any) => {
-                observer.error(error);
-            });
+                (error: any) => {
+                    observer.error(error);
+                });
         });
     }
 
@@ -34,9 +34,9 @@ export class BaseService {
             this.http.post(url, data).subscribe((response) => {
                 observer.next(response);
             },
-            (error: any) => {
-                observer.error(error);
-            });
+                (error: any) => {
+                    observer.error(error);
+                });
         });
     }
 
@@ -45,9 +45,9 @@ export class BaseService {
             this.http.delete(url).subscribe((response) => {
                 observer.next(response);
             },
-            (error: any) => {
-                observer.error(error);
-            });
+                (error: any) => {
+                    observer.error(error);
+                });
         });
     }
 }
