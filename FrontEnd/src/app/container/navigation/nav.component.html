@@ -1,13 +1,21 @@
 <nav class="d-flex wrap">
     <div class="container">
-        <div class="d-flex nav-row">
-            <img class="back" *ngIf="!isHome" (click)="redirect()" src='./assets/images/globals/arrow-left.svg'>
-            <img class="logo" (click)="redirect()" src='./assets/images/globals/logo-text.svg'>
-            <img *ngIf="!isSearch" (click)="redirect('filters')" class="filter" src='./assets/images/globals/filters.svg'>
-            <img *ngIf="isSearch" (click)="displaySearch()" class="filter" src='./assets/images/globals/search.svg'>
+        <div class="container">
+            <div class="d-flex relative nav-row">
+                <img class="back" *ngIf="!isHome" (click)="redirect()" src='./assets/images/globals/back.svg'>
+                <img class="logo" (click)="redirect()" src='./assets/images/globals/logo-text.svg'>
+                <div class="picto-container">
+                    <img (click)="redirect('filters')" (click)="toggleSearchValue('hide')" class="filter"
+                        src='./assets/images/globals/filters.svg'>
+                    <img (click)="toggleSearchValue()" class="filter search" src='./assets/images/globals/search.svg'>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="input-container container row" [ngClass]="{'active': toggleSearch}">
-        <app-search *ngIf="toggleSearch"></app-search>
+        <div class="input-container container row" [ngClass]="{'active': toggleSearch}">
+            <img (click)="toggleSearchValue()" class='picto cancel' src="./assets/images/globals/cross.svg">
+            <app-search (searchValue)="saveSearchValue($event)" (submitted)="toggleSearchValue('hide')"
+                *ngIf="toggleSearch">
+            </app-search>
+        </div>
     </div>
 </nav>

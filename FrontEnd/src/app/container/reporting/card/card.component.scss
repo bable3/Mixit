@@ -7,6 +7,13 @@
     margin: 3px;
 }
 
+@media screen and (max-width: 340px) {
+    .card {
+        width: 100px;
+        height: 170px;
+    }
+}
+
 @media screen and (min-width: 467px) {
     .card {
         width: 215px;

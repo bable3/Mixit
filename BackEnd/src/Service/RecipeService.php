@@ -34,7 +34,7 @@ class RecipeService
     {
         $query = $this->queryBuilder($searchDto);      
         $recipesResult = $this->context->findAll();
-        $recipes = [];
+        $recipes = array();
 
         foreach($recipesResult as $key => $recipe){
             $ingredients = [];
@@ -56,10 +56,12 @@ class RecipeService
                     $result = array_intersect($ingredients, $searchDto->ingredients);
                     $haveCommonValue = count($result) == count($searchDto->ingredients);
                     if($haveCommonValue){
-                        $recipes[$key] = $recipe;
+                        // $recipes[$key] = $recipe;
+                        array_push($recipes, $recipe);
                     }
                 }else{
-                    $recipes[$key] = $recipe;
+                    // $recipes[$key] = $recipe;
+                    array_push($recipes, $recipe);
                 }
             }
         }

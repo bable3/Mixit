@@ -21,9 +21,8 @@ export class ReportingComponent implements OnInit, OnChanges, OnDestroy {
     constructor(
         private recipeService: RecipeService,
         private router: Router,
-        private route: ActivatedRoute)
-    {
-        this.router.events.pipe(filter(event => event instanceof NavigationStart)).subscribe((val:NavigationStart) => {
+        private route: ActivatedRoute) {
+        this.router.events.pipe(filter(event => event instanceof NavigationStart)).subscribe((val: NavigationStart) => {
             this.search = val.url.substr(1);
             if (!isNil(this.search) && this.search !== '' && this.search !== 'filters' && !isNil(this.allRecipes)) {
                 this.recipes = this.allRecipes.filter(r => r.name.toLowerCase().indexOf(this.search.toLocaleLowerCase()) !== -1);
@@ -53,5 +52,9 @@ export class ReportingComponent implements OnInit, OnChanges, OnDestroy {
         if (this.subscribeRecipe) {
             this.subscribeRecipe.unsubscribe();
         }
+    }
+
+    reloadRecipes() {
+        this.router.navigate(['/']);
     }
 }

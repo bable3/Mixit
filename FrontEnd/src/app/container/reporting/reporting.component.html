@@ -1,9 +1,9 @@
-<div class="container">
+<div class="container reporting-container justify-center">
     <div class="m-y" *ngFor="let recipe of recipes">
         <app-card class="justify-center " [recipe]=recipe></app-card>
     </div>
     <div class="filters-error row" *ngIf="recipes?.length === 0">
         <div>Aucune recette n'a été trouvé</div>
-        <div class="link" (click)="reloadRecipes()">Recharger les recettes</div>
+        <div class="link" (click)="reloadRecipes()">Retourner aux recettes</div>
     </div>
 </div>

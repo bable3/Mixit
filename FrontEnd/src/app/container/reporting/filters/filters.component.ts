@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RecipeService } from 'src/app/services/recipe.service';
 import { Subscription } from 'rxjs';
 import { Ingredient } from 'src/app/models/ingredient.model';
@@ -17,16 +17,15 @@ export class FiltersComponent implements OnInit, OnDestroy {
     public ingredients: Array<Ingredient> = new Array<Ingredient>();
     public types: Array<string> = [];
     public selectedFilters: string;
-    
+
     private subscribeIngredient: Subscription = new Subscription();
     private subscribeRecipe: Subscription = new Subscription();
 
     constructor(
         private recipeService: RecipeService,
         private router: Router
-        ) 
-    {
-        this.router.events.pipe(filter(event => event instanceof NavigationStart)).subscribe((val:NavigationStart) => {
+    ) {
+        this.router.events.pipe(filter(event => event instanceof NavigationStart)).subscribe((val: NavigationStart) => {
             this.recipes = null;
         });
     }
@@ -62,6 +61,6 @@ export class FiltersComponent implements OnInit, OnDestroy {
     }
 
     resetFilters(): void {
-        this.ingredients.forEach(i => i.isActive == false);
+        this.ingredients.forEach(i => i.isActive = false);
     }
 }

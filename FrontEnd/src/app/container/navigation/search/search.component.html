@@ -1,4 +1,5 @@
 <form [formGroup]="form">
-    <input formControlName="search" class="row" type="text">
-    <img (click)="submit()" class="validate" src='./assets/images/globals/validate.svg'>
+    <input #search formControlName="search" class="row" type="text" placeholder="Mojito, Gin & Tonic, . . ."
+        (keyup.enter)="submit()" (blur)="desactiveSearch()">
+    <!-- <img class='picto validate' (click)="submit()" src='./assets/images/globals/validate.svg'> -->
 </form>

@@ -1,11 +1,11 @@
-<div class="container" *ngIf=!recipes>
-    <div class="container d-flex space-between">
+<div class="container filters-container" *ngIf=!recipes>
+    <div class="container row  d-flex space-between">
         <h2 class="row ingredient-title">selection</h2>
         <div *ngFor="let ingredient of ingredients">
             <app-cardFilters for *ngIf="ingredient.isActive" [ingredient]=ingredient></app-cardFilters>
         </div>
     </div>
-    <div class="container d-flex space-between" *ngFor="let type of types">
+    <div class="container d-flex space-between " *ngFor="let type of types">
         <h2 class="row ingredient-title">{{type}}</h2>
         <div *ngFor="let ingredient of ingredients">
             <div *ngIf="ingredient.type == type">
@@ -21,8 +21,8 @@
             Réinitialiser les filtres
         </div>
     </div>
-</div> 
+</div>
 
-<div class="container" *ngIf=recipes>
+<div class="container filters-container justify-center" *ngIf=recipes>
     <app-reporting [recipesInput]=recipes></app-reporting>
 </div>

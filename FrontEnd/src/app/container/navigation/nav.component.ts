@@ -12,11 +12,11 @@ export class NavComponent {
     public isSearch: boolean = true;
     public isHome: boolean = true;
     public toggleSearch: boolean = false;
+    public searchvalue: string;
 
     constructor(
-        private router: Router)
-    {
-        this.router.events.pipe(filter(event => event instanceof NavigationStart)).subscribe((val:NavigationStart) => {
+        private router: Router) {
+        this.router.events.pipe(filter(event => event instanceof NavigationStart)).subscribe((val: NavigationStart) => {
             this.isHome = (val.url === '/');
         });
     }
@@ -26,8 +26,18 @@ export class NavComponent {
         this.router.navigate([param]);
     }
 
-    displaySearch() {
-        this.toggleSearch = !this.toggleSearch;
-        this.isSearch = false;
+    toggleSearchValue(way) {
+        if (way == "hide") {
+            this.toggleSearch = true;
+            this.isSearch = false;
+        } if (way == 'show') {
+            this.toggleSearch = false;
+            this.isSearch = true;
+        } else {
+            this.toggleSearch = !this.toggleSearch;
+            this.isSearch = !this.isSearch;
+        }
+
     }
+
 }
